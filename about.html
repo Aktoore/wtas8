@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - AuctionHouse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { background-color: #f4e1f9; min-height: 100vh; display: flex; flex-direction: column; }
+    .navbar { background-color: #6a0dad; }
+    .navbar a { color: white !important; font-weight: 600; margin: 0 10px; }
+    .navbar a:hover { color: #d8b4fe !important; }
+    .auction-font { font-family: 'Cinzel Decorative', serif; }
+    .about-section { text-align: center; padding: 60px 20px; }
+    .about-section h1 { font-family: "Cinzel", serif; color: #6a0dad; margin-bottom: 40px; }
+    .info-box { background: #6a0dad; color: white; padding: 30px; margin: 20px auto; max-width: 600px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s; }
+    .info-box:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+    .accordion-button { background: #6a0dad !important; color: white !important; }
+    .accordion-button:not(.collapsed) { background: #9b4dca !important; }
+    .accordion-body { background: #f8f9fa; }
+    footer { background-color: #6a0dad; color: white; text-align: center; padding: 15px; margin-top: auto; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container d-flex justify-content-between">
+      <a href="index.html" class="navbar-brand"><span class="auction-font">AuctionHouse</span></a>
+      <div>
+        <a href="auctions.html">Auctions</a>
+        <a href="mybids.html">My Bids <span id="bidCount" class="badge bg-light text-dark">0</span></a>
+        <a href="about.html" class="active">About</a>
+        <a href="help.html">Help</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="about-section">
+    <h1>About AuctionHouse</h1>
+    
+    <div class="info-box">
+      <h4>Our Mission</h4>
+      <p>We provide a secure and transparent bidding system where every user can participate confidently in premium auctions.</p>
+    </div>
+
+    <div class="container mt-5" style="max-width: 800px;">
+      <h2 class="mb-4" style="color: #6a0dad;">How It Works</h2>
+      <div class="accordion" id="howItWorksAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#step1">
+              Step 1: Browse Auctions
+            </button>
+          </h2>
+          <div id="step1" class="accordion-collapse collapse show" data-bs-parent="#howItWorksAccordion">
+            <div class="accordion-body">
+              Explore our collection of rare items, collectibles, and exclusive products. Each item has a starting price and auction end date.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step2">
+              Step 2: Place Your Bid
+            </button>
+          </h2>
+          <div id="step2" class="accordion-collapse collapse" data-bs-parent="#howItWorksAccordion">
+            <div class="accordion-body">
+              Enter an amount higher than the current price. Your bid will be saved and you can track it in "My Bids" section.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step3">
+              Step 3: Win the Auction
+            </button>
+          </h2>
+          <div id="step3" class="accordion-collapse collapse" data-bs-parent="#howItWorksAccordion">
+            <div class="accordion-body">
+              If you have the highest bid when the auction ends, you win! We'll contact you to arrange payment and delivery.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>&copy; 2025 AuctionHouse</footer>
+
+  <script>
+    $(document).ready(function() {
+      const bids = JSON.parse(localStorage.getItem('myBids') || '[]');
+      $('#bidCount').text(bids.length);
+      
+      $('.info-box').hide().each(function(index) {
+        $(this).delay(index * 200).fadeIn(600);
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

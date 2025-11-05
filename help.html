@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help - AuctionHouse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { 
+      background-color: #f4e1f9; 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+    }
+    .navbar { 
+      background-color: #6a0dad; 
+    }
+    .navbar a { 
+      color: white !important; 
+      font-weight: 600; 
+      margin: 0 10px; 
+    }
+    .navbar a:hover { 
+      color: #d8b4fe !important; 
+    }
+    .auction-font { 
+      font-family: 'Cinzel Decorative', serif; 
+    }
+    .help-section { padding: 40px 20px; }
+    .faq-item { 
+      background: white; 
+      margin: 15px auto; 
+      max-width: 700px; 
+      border-radius: 10px; 
+      padding: 20px; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+      cursor: pointer; 
+      transition: all 0.3s; 
+    }
+    .faq-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .faq-question { font-weight: bold; 
+      color: #6a0dad; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    .faq-answer { display: none; margin-top: 15px; color: #555; line-height: 1.6; }
+    .toggle-icon { transition: transform 0.3s; }
+    .faq-item.active .toggle-icon { transform: rotate(180deg); }
+    .contact-form { 
+      max-width: 600px; 
+      margin: 30px auto; 
+      background: white; 
+      padding: 30px; 
+      border-radius: 12px; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    }
+    .form-control:focus { 
+      border-color: #6a0dad; 
+      box-shadow: 0 0 0 0.2rem rgba(106, 13, 173, 0.25); 
+    }
+    .submit-btn { 
+      background: #6a0dad; 
+      border: none; 
+      padding: 10px 30px; 
+      color: white; 
+      border-radius: 6px; 
+      transition: all 0.3s; 
+    }
+    .submit-btn:hover { 
+      background: #9b4dca; 
+      transform: translateY(-2px); 
+    }
+    footer { 
+      background-color: #6a0dad; 
+      color: white; 
+      text-align: center; 
+      padding: 15px; 
+      margin-top: auto; 
+    }
+    .success-message { display: none; background: #28a745; color: white; padding: 15px; border-radius: 6px; margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container d-flex justify-content-between">
+      <a href="index.html" class="navbar-brand"><span class="auction-font">AuctionHouse</span></a>
+      <div>
+        <a href="auctions.html">Auctions</a>
+        <a href="mybids.html">My Bids <span id="bidCount" class="badge bg-light text-dark">0</span></a>
+        <a href="about.html">About</a>
+        <a href="help.html" class="active">Help</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="help-section">
+    <h1 class="text-center mb-4" style="color: #6a0dad;">Frequently Asked Questions</h1>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How can I place a bid?</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        Go to the Auctions page, hover over an item, enter your bid amount (must be higher than current price), and click "Add Bid". Your bid will appear in "My Bids".
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Can I cancel my bid?</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        Yes! You can remove bids from the "My Bids" page by clicking the "Remove Bid" button. However, in real auctions, bids are usually final.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What happens if I win?</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        If you have the highest bid when the auction ends, you'll win the item! We'll contact you via email to arrange payment and shipping.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How do I track my bids?</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        Click on "My Bids" in the navigation menu to see all your active bids, their status (Pending, Winning, or Outbid), and total bid amount.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Is my payment information secure?</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        Absolutely! We use industry-standard encryption and never store your payment details. All transactions are processed securely.
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3 class="text-center mb-4" style="color: #6a0dad;">Contact Support</h3>
+      <form id="contactForm">
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Your Email" required>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="4" placeholder="Your Question" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn w-100">Send Message</button>
+        <div class="success-message" id="successMessage">✓ Message sent successfully!</div>
+      </form>
+    </div>
+  </section>
+
+  <footer>&copy; 2025 AuctionHouse</footer>
+
+  <script>
+    $(document).ready(function() {
+      const bids = JSON.parse(localStorage.getItem('myBids') || '[]');
+      $('#bidCount').text(bids.length);
+
+      $('.faq-item').on('click', function() {
+        const answer = $(this).find('.faq-answer');
+        const wasActive = $(this).hasClass('active');
+        
+        $('.faq-item').removeClass('active');
+        $('.faq-answer').slideUp(300);
+        
+        if (!wasActive) {
+          $(this).addClass('active');
+          answer.slideDown(300);
+        }
+      });
+
+      $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+        $('#successMessage').slideDown();
+        $(this).find('input, textarea').val('');
+        setTimeout(() => $('#successMessage').slideUp(), 3000);
+      });
+
+      $('.faq-item').hide().each(function(index) {
+        $(this).delay(index * 100).fadeIn(400);
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
